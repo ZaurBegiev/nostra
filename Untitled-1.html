@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nostra</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<h3>Upload data</h3>
+<form class="form" id="myForm">
+    <input type="file" id="inputFile"><br>
+    <button type="submit">Upload file</button>
+</form>
+<h3>Table view</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>close</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>02-Jan-86</td>
+      <td>209.59</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>03-Jan-86</td>
+      <td>210.88</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>06-Jan-86</td>
+      <td>210.65</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>07-Jan-86</td>
+      <td>213.80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>08-Jan-86</td>
+      <td>207.97</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Plot view</h3>
+
+</body>
+
+<script>
+const myForm = document.getElementById("myForm")
+const inputFile = document.getElementById("inputFile")
+
+myForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const endpoint = "/upload_dataset";
+    const formData = new FormData();
+
+    formData.append("inputFile", inputFile.files[0]);
+
+    fetch(endpoint, {
+        method: "POST",
+        body: formData
+    }).catch(console.error);
+});
+</script>
+
+</html>
