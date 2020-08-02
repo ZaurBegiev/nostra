@@ -7,28 +7,9 @@
     <button type="submit">Upload file</button>
 </form>
 <h3>Table view</h3>
-<div id=""></div>
 <h3>Plot view</h3>
 {% endblock %}
 
 {% block script %}
-<script>
-const myForm = document.getElementById('myForm')
-const inputFile = document.getElementById('inputFile')
-const tableView = ''
-
-myForm.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const endpoint = '/upload_dataset';
-    const formData = new FormData();
-
-    formData.append('inputFile', inputFile.files[0]);
-
-    fetch(endpoint, {
-        method: 'POST',
-        body: formData
-    }).catch(console.error);
-});
-</script>
+<script type="text/javascript" src={{ url_for('static', filename='upload_file.js') }}></script>
 {% endblock %}
