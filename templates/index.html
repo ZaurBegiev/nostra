@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h3>Upload data</h3>
+<form class="form" id="myForm">
+    <input type="file" id="inputFile"><br>
+    <button type="submit">Upload file</button>
+</form>
+<h3>Table view</h3>
+<div id=""></div>
+<h3>Plot view</h3>
+{% endblock %}
+
+{% block script %}
+<script>
+const myForm = document.getElementById('myForm')
+const inputFile = document.getElementById('inputFile')
+const tableView = ''
+
+myForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const endpoint = '/upload_dataset';
+    const formData = new FormData();
+
+    formData.append('inputFile', inputFile.files[0]);
+
+    fetch(endpoint, {
+        method: 'POST',
+        body: formData
+    }).catch(console.error);
+});
+</script>
+{% endblock %}
