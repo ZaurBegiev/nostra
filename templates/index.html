@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h3>Upload data</h3>
-<form class="form" id="myForm">
-    <input type="file" id="inputFile"><br>
-    <button type="submit">Upload file</button>
-</form>
-<h3>Table view</h3>
-<h3>Plot view</h3>
+<div class="import_menu">
+    <h3>Import data</h3>
+    <input type="file" id="file">
+</div>
+
+<div>
+    <button id="file-load-trigger">Show table</button>
+</div>
+
+<div id="example-table"></div>
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src={{ url_for('static', filename='upload_file.js') }}></script>
+
+<script type="text/javascript" src={{ url_for('static', filename='upload_data_from_file.js') }}></script>
+<script type="text/javascript" src={{ url_for('static', filename='tabulate.js') }}></script>
+
 {% endblock %}
